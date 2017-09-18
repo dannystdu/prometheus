@@ -19,6 +19,8 @@ import (
 	"net/url"
 	"testing"
 	"time"
+
+	"github.com/prometheus/prometheus/storage/tsdb"
 )
 
 func TestGlobalURL(t *testing.T) {
@@ -77,7 +79,7 @@ func TestReadyAndHealthy(t *testing.T) {
 		ReadTimeout:    30 * time.Second,
 		MaxConnections: 512,
 		Context:        nil,
-		Storage:        nil,
+		Storage:        &tsdb.ReadyStorage{},
 		QueryEngine:    nil,
 		TargetManager:  nil,
 		RuleManager:    nil,
